@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @election.title %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @election.date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @election.status %>
+</p>
+
+<p>
+  <b>Lock:</b>
+  <%= @election.lock %>
+</p>
+
+
+<%= link_to 'Edit', edit_election_path(@election) %> |
+<%= link_to 'Back', elections_path %>
