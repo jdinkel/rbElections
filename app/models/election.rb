@@ -20,4 +20,18 @@ class Election < ActiveRecord::Base
   has_many :races, :dependent => :destroy
 
   validates_uniqueness_of :title, :case_sensitive => false
+
+  before_save :import_upload
+
+  private
+
+    def import_upload
+      #self.races += parse(data_file) if data_file
+
+    end
+
+    def parse(io_stream) # This MUST return an array of Line objects
+      io_stream.read.split($/).map { |line_data| Line.new(:data => line_data) }
+    end
+
 end
