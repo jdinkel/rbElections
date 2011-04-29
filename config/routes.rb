@@ -1,5 +1,6 @@
 RbElections::Application.routes.draw do
   resources :elections
+  root :to => 'elections#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
