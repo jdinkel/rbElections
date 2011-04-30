@@ -15,15 +15,22 @@
 #
 
 class Election < ActiveRecord::Base
+  attr_accessor :data_file, :summary_file
+  
   belongs_to :type
   belongs_to :status
   has_many :races, :dependent => :destroy
 
   validates_uniqueness_of :title, :case_sensitive => false
 
-  before_save :import_upload
+  #before_save :import_upload
+  before_save :sleep_some
 
   private
+
+    def sleep_some
+      sleep 6
+    end
 
     def import_upload
       #self.races += parse(data_file) if data_file

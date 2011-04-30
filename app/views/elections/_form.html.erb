@@ -20,8 +20,12 @@
     <%= f.date_select :date %>
   </div>
   <div class="field">
+    <%= f.label :type %><br />
+    <%= collection_select(:election, :type_id, Type.all, :id, :value) %>
+  </div>
+  <div class="field">
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= collection_select(:election, :status_id, Status.all, :id, :value) %>
   </div>
   <div class="field">
     <%= f.label :lock %><br />

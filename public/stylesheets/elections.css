@@ -1,9 +1,33 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: serif;
+}
+
+header h1 {
+  display: inline;
+  float: right;
+  padding-top: 0.5em;
+}
+
+hr.subheader {
+    border: 0;
+    height: 0.7em;
+    background: #cc0000;
+}
+
+p.flash {
+    color: green;
+}
+
+td.title {
+    font-size: larger;
+}
+
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
+ /* font-size:   13px;
+  line-height: 18px;*/
 }
 
 pre {

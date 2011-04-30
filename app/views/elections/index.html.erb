@@ -4,6 +4,7 @@
   <tr>
     <th>Title</th>
     <th>Date</th>
+    <th>Type</th>
     <th>Status</th>
     <th>Lock</th>
     <th></th>
@@ -15,7 +16,8 @@
   <tr>
     <td><%= election.title %></td>
     <td><%= election.date %></td>
-    <td><%= election.status %></td>
+    <td><%= election.type.value %></td>
+    <td><%= election.status.value %></td>
     <td><%= election.lock %></td>
     <td><%= link_to 'Show', election %></td>
     <td><%= link_to 'Edit', edit_election_path(election) %></td>
