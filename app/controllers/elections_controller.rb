@@ -42,7 +42,7 @@ class ElectionsController < ApplicationController
     @election = Election.new(params[:election])
 
     if @election.save
-      redirect_to(@election, :notice => 'Election was successfully created.')
+      redirect_to(@election, :notice => 'Election will be created shortly.')
     else
       render :action => "new"
     end
@@ -53,7 +53,7 @@ class ElectionsController < ApplicationController
     @election = Election.find(params[:id])
 
     if @election.update_attributes(params[:election])
-      redirect_to(@election, :notice => 'Election was successfully updated.')
+      redirect_to(@election, :notice => 'Election will be updated shortly.')
     else
       render :action => "edit"
     end
