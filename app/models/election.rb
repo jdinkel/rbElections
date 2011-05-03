@@ -31,28 +31,42 @@ class Election < ActiveRecord::Base
   ## status updated before the numbers are updated.  Alternatively, I could
   ## code the interface so only the election metadata is changed, or only
   ## files are uploaded (split to separate interfaces).
-  after_create :do_something  # delayed_job can not processs before creation
-  before_update :do_something
+  after_create :process_uploads  # delayed_job can not process before creation
+  before_update :process_uploads  # process first, so status does not change before data
 
   private
 
-    def do_something
-      #self.delay.something
+    def process_uploads
+      self.delay.process_details_and_summary(details_file, summary_file)
+    end
+    
+    def process_details_and_summary(details_stream, summary_stream)
+      election_data = import_data(details_stream, summary_stream)
     end
 
-    def sleep_some
-      self.delay.go_to_sleep(15)  # this works
+    def import_data(details,summary)
+            # Character range variables for fixed-width columns in text files
+
+      detail_total_vote_char_range = 11..16
+      detail_party_char_range = 47..49
+      detail_race_name_char_range = 57..112
+      detail_candidate_name_char_range = 113..150
+      detail_precinct_name_char_range = 151..180
+      detail_allowed_char_range = 206..207 # ah! I bet this is how many choices are allowed (pick # of #)
+
+      summary_eligible_precincts_char_range = 7..10
+      summary_candidate_total_votes_char_range = 11..17
+      summary_counted_precincts_char_range = 53..56
+      summary_race_name_char_range = 74..129
+      summary_candidate_name_char_range = 130..167
+
+      # Process details
+      raw_details = details_stream.read.split($/).map do |line_data|
+
+      end
     end
 
-    def go_to_sleep(how_long)
-      sleep how_long
-    end
-
-    def import_upload
-      # self.races += parse(data_file) if data_file # is this an immediate save?
-      # self.races += self.delay.parse(data_file)
-
-    end
+    ### After this is really just for reference
 
     def parse(io_stream) # This MUST return an array of Line objects
       io_stream.read.split($/).map { |line_data| Line.new(:data => line_data) }
@@ -81,6 +95,7 @@ class Election < ActiveRecord::Base
       detail_file_lines = File.readlines detail_file
 
       election_details = detail_file_lines.map do |line|
+        #return a hash of these values, after checking the line is legit (not one of the junk lines from the top of the file)
         if line[detail_allowed_char_range].to_i > 0
           {
             :total_vote        => line[detail_total_vote_char_range],
@@ -159,6 +174,7 @@ class Election < ActiveRecord::Base
           race.save!
           candidate.save!
           precinct.save!
+          #add the precinct to the race, if not already
           precinct.races << race unless precinct.races.include?(race) #this saves immediately
           vote.save!
 
