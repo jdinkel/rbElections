@@ -53,7 +53,7 @@ class ElectionsController < ApplicationController
     @election = Election.find(params[:id])
 
     if @election.update_attributes(params[:election])
-      redirect_to(@election, :notice => 'Election will be updated shortly.')
+      redirect_to(@election, :notice => 'Election will be updated momentarily.')
     else
       render :action => "edit"
     end

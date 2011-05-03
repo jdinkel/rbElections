@@ -1,4 +1,4 @@
-<%= form_for(@election) do |f| %>
+<%= form_for(@election, :html => {:multipart => true}) do |f| %>
   <% if @election.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@election.errors.count, "error") %> prohibited this election from being saved:</h2>
@@ -33,11 +33,11 @@
   </div>
   <div class="field">
     <%= f.label :details_file %><br />
-    <%= f.file_field :details_file %>
+    <%= f.file_field :details_upload %>
   </div>
   <div class="field">
     <%= f.label :summary_file %><br />
-    <%= f.file_field :summary_file %>
+    <%= f.file_field :summary_upload %>
   </div>
   <div class="actions">
     <%= f.submit @form_button_text %>
