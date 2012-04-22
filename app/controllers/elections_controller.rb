@@ -1,25 +1,29 @@
 class ElectionsController < ApplicationController
   # GET /elections
   # GET /elections.xml
+  # GET /elections.json
   def index
     @elections = Election.all
     @title = 'All Elections'
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @elections }
+      format.xml  { render :xml  => @elections }
+      format.json { render :json => @elections }
     end
   end
 
   # GET /elections/1
   # GET /elections/1.xml
+  # GET /elections/1.json
   def show
     @election = Election.find(params[:id])
     @title = @election.title
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @election }
+      format.xml  { render :xml  => @election }
+      format.json { render :json => @election }
     end
   end
 
