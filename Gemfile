@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '~>3.0.7'
 
-gem 'delayed_job'
+#gem 'delayed_job'
 
 group :development, :test do
   gem 'sqlite3'
@@ -12,7 +12,7 @@ group :development do
   gem 'rspec-rails'
   gem 'compass'
   gem 'heroku'
-  gem 'annotate-models'
+  #gem 'annotate-models'
 end
 
 group :test do
