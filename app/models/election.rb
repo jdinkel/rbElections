@@ -16,13 +16,15 @@
 
 class Election < ActiveRecord::Base
   attr_accessor :details_upload, :summary_upload
-  attr_accessible :details_upload, :summary_upload, :title, :date
+  attr_accessible :details_upload, :summary_upload, :title, :date, :type_id, :status_id
   
   belongs_to :type
   belongs_to :status
   has_many :races, :dependent => :destroy
 
-  validates_uniqueness_of :title, :case_sensitive => false
+  validates :title, :presence => true, :uniqueness => { :case_sensitive => false }
+  validates :type_id, :presence => true
+  validates :status_id, :presence => true
 
   default_scope :order => 'elections.date DESC'
 
