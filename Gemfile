@@ -13,6 +13,7 @@ group :development do
   gem 'compass'
   gem 'heroku'
   #gem 'annotate-models'
+  gem 'pry-rails'
 end
 
 group :test do
