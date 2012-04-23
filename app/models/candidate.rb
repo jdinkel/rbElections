@@ -17,4 +17,6 @@ class Candidate < ActiveRecord::Base
   belongs_to :race
   has_many :votes
   has_many :precincts, :through => :votes
+  
+  default_scope :order => 'candidates.cache_votes DESC'
 end

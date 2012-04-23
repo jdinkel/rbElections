@@ -22,8 +22,8 @@ class ElectionsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml  => @election }
-      format.json { render :json => @election }
+      format.xml  { render :xml  => @election.to_xml(:include => {:races => {:include => :candidates}}) }
+      format.json { render :json => @election.to_json(:include => {:races => {:include => :candidates}}) }
     end
   end
 
@@ -46,7 +46,8 @@ class ElectionsController < ApplicationController
     @election = Election.new(params[:election])
 
     if @election.save
-      redirect_to(@election, :notice => 'Election will be created shortly.')
+      #redirect_to(@election, :notice => 'Election will be created shortly.')
+      redirect_to(elections_path, :notice => 'Election has been created.')
     else
       render :action => "new"
     end
@@ -57,7 +58,8 @@ class ElectionsController < ApplicationController
     @election = Election.find(params[:id])
 
     if @election.update_attributes(params[:election])
-      redirect_to(@election, :notice => 'Election will be updated momentarily.')
+      #redirect_to(@election, :notice => 'Election will be updated momentarily.')
+      redirect_to(elections_path, :notice => 'Election has been updated.')
     else
       render :action => "edit"
     end

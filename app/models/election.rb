@@ -35,28 +35,39 @@ class Election < ActiveRecord::Base
   validates :summary_upload, :presence => {
               :message => "can't be blank when uploading Details" },
               :unless => "details_upload.nil?"
+  # I should put in some filename checks, to be sure the names are the same
+  # except the details file ends in (D|d) and the summary file ends in (S|s).
+  # in the parse operation I may then do some more detailed checks to ensure
+  # the details does look like a details file and the summary file does look
+  # like a summary file before performing the parse and save.
 
   default_scope :order => 'elections.date DESC'
 
-  #before_save :import_upload
-  #after_save :sleep_some
   ## need to consider delayed_job when setting status.  I wouldn't want the
   ## status updated before the numbers are updated.  Alternatively, I could
   ## code the interface so only the election metadata is changed, or only
   ## files are uploaded (split to separate interfaces).
-  #after_create :process_uploads  # delayed_job can not process before creation
-  before_update :process_uploads  # process first, so status does not change before data
+  after_create :process_details_and_summary
+  # I have to use after_create because before_create or before_save can not
+  # save the date before the record is saved.  I would like to figure out a
+  # better way to do this.
+  before_update :process_details_and_summary
 
 
 
-    def process_uploads
-      #self.delay.process_details_and_summary(details_file, summary_file)
-      self.process_details_and_summary(details_upload.read.split($/), summary_upload.read.split($/))
-    end
+    #def process_uploads
+    #  #self.delay.process_details_and_summary(details_file, summary_file)
+    #  self.process_details_and_summary(details_upload.read.split($/), summary_upload.read.split($/))
+    #end
     
-    def process_details_and_summary(details, summary)
-      raw_data = import_data(details, summary)
-      save_data(raw_data)
+    #def process_details_and_summary(details, summary)
+    #  raw_data = import_data(details, summary)
+    #  save_data(raw_data)
+    #end
+    def process_details_and_summary
+      unless details_upload.nil? || summary_upload.nil?
+        save_data import_data(details_upload.read.split($/), summary_upload.read.split($/))
+      end
     end
 
     def import_data(details,summary)
