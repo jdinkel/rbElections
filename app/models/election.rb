@@ -23,10 +23,18 @@ class Election < ActiveRecord::Base
   has_many :races, :dependent => :destroy
 
   validates :title, :presence => true, :uniqueness => { :case_sensitive => false }
-  validates :type_id, :presence => true
-  validates :status_id, :presence => true
-  validates :details_upload, :presence => {:message => "can't be blank when uploading Summary"}, :unless => "summary_upload.nil?"
-  validates :summary_upload, :presence => {:message => "can't be blank when uploading Details"}, :unless => "details_upload.nil?"
+  validates :type_id, :presence => true,
+            :inclusion => { :in => Type.all.map { |t| t.id },
+              :message => "%{value} is not a valid type id" }
+  validates :status_id, :presence => true,
+            :inclusion => { :in => Status.all.map { |t| t.id },
+              :message => "%{value} is not a valid status id" }
+  validates :details_upload, :presence => {
+              :message => "can't be blank when uploading Summary" },
+              :unless => "summary_upload.nil?"
+  validates :summary_upload, :presence => {
+              :message => "can't be blank when uploading Details" },
+              :unless => "details_upload.nil?"
 
   default_scope :order => 'elections.date DESC'
 
