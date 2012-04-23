@@ -32,14 +32,14 @@ class Election < ActiveRecord::Base
   ## status updated before the numbers are updated.  Alternatively, I could
   ## code the interface so only the election metadata is changed, or only
   ## files are uploaded (split to separate interfaces).
-  after_create :process_uploads  # delayed_job can not process before creation
+  #after_create :process_uploads  # delayed_job can not process before creation
   before_update :process_uploads  # process first, so status does not change before data
 
 
 
     def process_uploads
       #self.delay.process_details_and_summary(details_file, summary_file)
-      self.delay.process_details_and_summary(details_upload.read.split($/), summary_upload.read.split($/))
+      self.process_details_and_summary(details_upload.read.split($/), summary_upload.read.split($/))
     end
     
     def process_details_and_summary(details, summary)
