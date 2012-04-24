@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-RbElections::Application.config.secret_token = 'fe7291e7e212022d2f96f1c64f0af1a2ffbc58c55794da793e0a8ea13bcf2d9081f80528ce08e6c300b0af880ccffe2592545a4f508b8961fa8239d4017bab9d'
+RbElections::Application.config.secret_token = '868719756fd9b0bfd29e9af8188ed9405f90a97042de517c6b681e15fb49d4f81d22a58c1f44cf651beae0756cfb996945a3ca02029c538c19f7bde7acee322c'
