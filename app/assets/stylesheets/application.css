@@ -20,6 +20,7 @@
 /*
  * Old Styles, eventually replace these with scss/bootstrap and delete
 */
+/*
 h1, h2, h3, h4, h5, h6 {
   font-family: serif;
 }
@@ -50,6 +51,7 @@ body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
  /* font-size: 13px;
 line-height: 18px;*/
+/*
 }
 
 pre {
@@ -99,4 +101,4 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
-}
+} */

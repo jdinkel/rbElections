@@ -5,6 +5,7 @@ gem 'rails', '~>3.2.3'
 
 #gem 'delayed_job'
 gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 2.0.2'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
