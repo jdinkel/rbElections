@@ -1,1 +1,105 @@
 @import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$primaryColor: #cc0000;
+$secondaryColor: #bfb9a4;
+/* universal */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: ‘Times New Roman’, Times, serif;
+}
+
+header {
+    background-color: white;
+    position: relative;
+    h1 {
+        display: inline;
+        float: right;
+        position: absolute;
+        bottom: 0.7em;
+        right: 6px;
+        /*padding-top: 0.5em;*/
+    }
+}
+
+hr.subheader {
+    border: 0;
+    height: 0.7em;
+    background: $primaryColor;
+    margin-bottom: 0px;
+}
+
+body {
+    background-color: $secondaryColor;
+}
+
+.container {
+    background-color: white;
+    padding-top: 12px;
+    margin-top: 0px;
+    min-height: 30em;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 100%
+}
+
+th {
+    background-color: gray;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid lightgray;
+}
+
+tr.odd {
+    background-color: lightgray;
+    td.int {
+        border-right: 2px solid white;
+        border-left: 2px solid white;
+    }
+    td.first {
+        border-right: 2px solid white;
+    }
+    td.last {
+        border-left: 2px solid white;
+    }
+}
+
+td {
+    border: 2px solid lightgray;
+    padding: 0.5em 1em;
+    font-size: 120%;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

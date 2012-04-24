@@ -1,32 +1,25 @@
 <% provide(:title, 'All Elections') %>
 
-<h1>Listing elections</h1>
+<div class="row"><div class="span10 offset1"><h2>Election List</h2></div></div>
 
+<div class="row"><div class="span10 offset1">
 <table>
   <tr>
     <th>Title</th>
     <th>Date</th>
-    <th>Type</th>
     <th>Status</th>
-    <th>Lock</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @elections.each do |election| %>
-  <tr>
-    <td><%= election.title %></td>
-    <td><%= election.date %></td>
-    <td><%= election.type.value %></td>
-    <td><%= election.status.value %></td>
-    <td><%= election.lock %></td>
-    <td><%= link_to 'Show', election %></td>
-    <td><%= link_to 'Edit', edit_election_path(election) %></td>
-    <td><%= link_to 'Destroy', election, :confirm => 'Are you sure?', :method => :delete %></td>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td class="first"><%= link_to "#{election.date.year} #{election.type.value} Election", election %></td>
+    <td class="int"><%= election.date.strftime("%B %-d, %Y") %></td>
+    <td class="last"><%= election.status.value %></td>
   </tr>
 <% end %>
 </table>
+</div>
+</div>
 
 <br />
 
