@@ -16,7 +16,7 @@
 
 class Election < ActiveRecord::Base
   attr_accessor :details_upload, :summary_upload
-  attr_accessible :details_upload, :summary_upload, :title, :date, :type_id, :status_id
+  attr_accessible :details_upload, :summary_upload, :title, :date, :type_id, :status_id, :lock, :party_split
   
   belongs_to :type
   belongs_to :status

@@ -14,6 +14,8 @@
 #
 
 class Race < ActiveRecord::Base
+  attr_accessible :cache_precincts_reporting, :imported_as, :instructions, :name
+  
   belongs_to :election
 
   has_many :candidates, :dependent => :destroy

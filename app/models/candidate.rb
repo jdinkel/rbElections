@@ -14,6 +14,8 @@
 #
 
 class Candidate < ActiveRecord::Base
+  attr_accessible :cache_percentage, :cache_votes, :name, :party
+  
   belongs_to :race
   has_many :votes
   has_many :precincts, :through => :votes

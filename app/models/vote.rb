@@ -12,6 +12,8 @@
 #
 
 class Vote < ActiveRecord::Base
+  attr_accessible :number
+  
   belongs_to :candidate
   belongs_to :precinct
 end

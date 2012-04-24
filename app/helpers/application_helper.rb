@@ -1,12 +1,12 @@
 module ApplicationHelper
 
   # Return a title on a per page basis
-  def title
+  def full_title(page_title)
     base_title = 'Butler County, KS Elections Site'
-    if @title.nil?
+    if page_title.empty?
       base_title
     else
-      "#{base_title} | #{@title}"
+      "#{base_title} | #{page_title}"
     end
   end
 

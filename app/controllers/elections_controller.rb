@@ -47,7 +47,8 @@ class ElectionsController < ApplicationController
 
     if @election.save
       #redirect_to(@election, :notice => 'Election will be created shortly.')
-      redirect_to(elections_path, :notice => 'Election has been created.')
+      # flash[:success] = 'Election was successfully created.'
+      redirect_to(elections_path, :notice => 'Election was successfully created.')
     else
       render :action => "new"
     end
@@ -59,7 +60,8 @@ class ElectionsController < ApplicationController
 
     if @election.update_attributes(params[:election])
       #redirect_to(@election, :notice => 'Election will be updated momentarily.')
-      redirect_to(elections_path, :notice => 'Election has been updated.')
+      # flash[:success] = 'Election was successfully updated.'
+      redirect_to(elections_path, :notice => 'Election was successfully updated.')
     else
       render :action => "edit"
     end
