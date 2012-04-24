@@ -4,7 +4,6 @@ class ElectionsController < ApplicationController
   # GET /elections.json
   def index
     @elections = Election.all
-    @title = 'All Elections'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +17,6 @@ class ElectionsController < ApplicationController
   # GET /elections/1.json
   def show
     @election = Election.find(params[:id])
-    @title = @election.title
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,15 +28,13 @@ class ElectionsController < ApplicationController
   # GET /elections/new
   def new
     @election = Election.new
-    @title = 'New Election'
-    @form_button_text = 'Create'
+    @form_button_text = 'Create' #should be moved to the view, like the title
   end
 
   # GET /elections/1/edit
   def edit
     @election = Election.find(params[:id])
-    @title = "Edit #{@election.title}"
-    @form_button_text = 'Update'
+    @form_button_text = 'Update' #should be moved to view, like the title
   end
 
   # POST /elections
@@ -47,8 +43,8 @@ class ElectionsController < ApplicationController
 
     if @election.save
       #redirect_to(@election, :notice => 'Election will be created shortly.')
-      # flash[:success] = 'Election was successfully created.'
-      redirect_to(elections_path, :notice => 'Election was successfully created.')
+      flash[:success] = 'Election was successfully created.'
+      redirect_to elections_path
     else
       render :action => "new"
     end
@@ -60,8 +56,8 @@ class ElectionsController < ApplicationController
 
     if @election.update_attributes(params[:election])
       #redirect_to(@election, :notice => 'Election will be updated momentarily.')
-      # flash[:success] = 'Election was successfully updated.'
-      redirect_to(elections_path, :notice => 'Election was successfully updated.')
+      flash[:success] = 'Election was successfully updated.'
+      redirect_to elections_path
     else
       render :action => "edit"
     end
@@ -71,7 +67,8 @@ class ElectionsController < ApplicationController
   def destroy
     @election = Election.find(params[:id])
     @election.destroy
-
-    redirect_to(elections_url)
+    
+    flash[:success] = 'Election was successfully destroyed.'
+    redirect_to elections_url
   end
 end
