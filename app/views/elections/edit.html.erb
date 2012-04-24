@@ -1,7 +1,7 @@
 <% provide(:title, "Edit #{@election.title}") %>
 <h1>Editing election</h1>
 
-<%= render 'form' %>
+<%= render 'form', :form_button_text => 'Update' %>
 
 <%= link_to 'Show', @election %> |
 <%= link_to 'Back', elections_path %>

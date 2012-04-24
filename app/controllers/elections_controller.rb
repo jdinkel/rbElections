@@ -28,13 +28,11 @@ class ElectionsController < ApplicationController
   # GET /elections/new
   def new
     @election = Election.new
-    @form_button_text = 'Create' #should be moved to the view, like the title
   end
 
   # GET /elections/1/edit
   def edit
     @election = Election.find(params[:id])
-    @form_button_text = 'Update' #should be moved to view, like the title
   end
 
   # POST /elections
@@ -42,7 +40,7 @@ class ElectionsController < ApplicationController
     @election = Election.new(params[:election])
 
     if @election.save
-      #redirect_to(@election, :notice => 'Election will be created shortly.')
+      #flash[:success] = 'Election will be created shortly.'
       flash[:success] = 'Election was successfully created.'
       redirect_to elections_path
     else
@@ -55,7 +53,7 @@ class ElectionsController < ApplicationController
     @election = Election.find(params[:id])
 
     if @election.update_attributes(params[:election])
-      #redirect_to(@election, :notice => 'Election will be updated momentarily.')
+      #flash[:success] = 'Election will be updated momentarily.'
       flash[:success] = 'Election was successfully updated.'
       redirect_to elections_path
     else
