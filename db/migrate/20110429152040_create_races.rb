@@ -1,5 +1,5 @@
 class CreateRaces < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :races do |t|
       t.string :name
       t.string :imported_as
@@ -9,9 +9,5 @@ class CreateRaces < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :races
   end
 end

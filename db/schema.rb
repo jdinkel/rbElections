@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20110429152829) do
     t.integer  "race_id"
     t.decimal  "cache_percentage", :precision => 5, :scale => 2
     t.integer  "cache_votes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   create_table "elections", :force => true do |t|
@@ -30,16 +30,16 @@ ActiveRecord::Schema.define(:version => 20110429152829) do
     t.integer  "status_id",                      :null => false
     t.boolean  "party_split", :default => false, :null => false
     t.boolean  "lock",        :default => false, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "elections", ["title"], :name => "index_elections_on_title", :unique => true
 
   create_table "precincts", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "precincts_races", :id => false, :force => true do |t|
@@ -53,22 +53,22 @@ ActiveRecord::Schema.define(:version => 20110429152829) do
     t.string   "instructions"
     t.integer  "election_id"
     t.string   "cache_precincts_reporting"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "statuses", :force => true do |t|
     t.string   "value",      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "statuses", ["value"], :name => "index_statuses_on_value", :unique => true
 
   create_table "types", :force => true do |t|
     t.string   "value",      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "types", ["value"], :name => "index_types_on_value", :unique => true
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(:version => 20110429152829) do
     t.integer  "number"
     t.integer  "candidate_id"
     t.integer  "precinct_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end
