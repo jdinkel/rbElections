@@ -10,6 +10,8 @@
 #
 
 class Status < ActiveRecord::Base
+  attr_accessible :value
+  
   has_many :elections
 
   validates_uniqueness_of :value, :case_sensitive => false
