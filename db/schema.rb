@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110429152829) do
+ActiveRecord::Schema.define(:version => 20120425193735) do
 
   create_table "candidates", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20110429152829) do
   end
 
   create_table "elections", :force => true do |t|
-    t.string   "title",                          :null => false
     t.date     "date",                           :null => false
     t.integer  "type_id",                        :null => false
     t.integer  "status_id",                      :null => false
@@ -34,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110429152829) do
     t.datetime "updated_at",                     :null => false
   end
 
-  add_index "elections", ["title"], :name => "index_elections_on_title", :unique => true
+  add_index "elections", ["date"], :name => "index_elections_on_date", :unique => true
 
   create_table "precincts", :force => true do |t|
     t.string   "name"

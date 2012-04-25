@@ -1,47 +1,47 @@
 <% provide(:title, '@election.title') %>
 
 <div class="row">
-  <div class="span12"
+  <div class="span10 offset1">
     <p>
       <b>Title:</b>
       <%= @election.title %>
     </p>
+
+    <p>
+      <b>Date:</b>
+      <%= @election.date %>
+    </p>
+
+    <p>
+      <b>Type:</b>
+      <%= @election.type.value %>
+    </p>
+
+    <p>
+      <b>Status:</b>
+      <%= @election.status.value %>
+    </p>
+
+    <p>
+      <b>Lock:</b>
+      <%= @election.lock %>
+    </p>
+
+
+    <%= link_to 'Edit', edit_election_path(@election) %> |
+    <%= link_to 'Back', elections_path %>
+
+    <br /><br /><hr />
+
+    <% @election.races.each do |race| %>
+      <h3><%= race.name %></h3>
+      <table>
+        <tr><th>Candidate</th><th>Votes</th></tr>
+        <% race.candidates.each do |candidate| %>
+          <tr><td><%= candidate.name %></td><td><%= candidate.cache_votes %></td></tr>
+        <% end %>
+      </table>
+      <br /><br />
+    <% end %>
   </div>
 </div>
-
-<p>
-  <b>Date:</b>
-  <%= @election.date %>
-</p>
-
-<p>
-  <b>Type:</b>
-  <%= @election.type.value %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @election.status.value %>
-</p>
-
-<p>
-  <b>Lock:</b>
-  <%= @election.lock %>
-</p>
-
-
-<%= link_to 'Edit', edit_election_path(@election) %> |
-<%= link_to 'Back', elections_path %>
-
-<br /><br /><hr />
-
-<% @election.races.each do |race| %>
-  <h3><%= race.name %></h3>
-  <table>
-    <tr><th>Candidate</th><th>Votes</th></tr>
-    <% race.candidates.each do |candidate| %>
-      <tr><td><%= candidate.name %></td><td><%= candidate.cache_votes %></td></tr>
-    <% end %>
-  </table>
-  <br /><br />
-<% end %>

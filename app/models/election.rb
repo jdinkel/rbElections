@@ -16,13 +16,13 @@
 
 class Election < ActiveRecord::Base
   attr_accessor :details_upload, :summary_upload
-  attr_accessible :details_upload, :summary_upload, :title, :date, :type_id, :status_id, :lock, :party_split
+  attr_accessible :details_upload, :summary_upload, :date, :type_id, :status_id, :lock, :party_split
   
   belongs_to :type
   belongs_to :status
   has_many :races, :dependent => :destroy
 
-  validates :title, :presence => true, :uniqueness => { :case_sensitive => false }
+  validates :date, :presence => true, :uniqueness => true
   validates :type_id, :presence => true,
             :inclusion => { :in => Type.all.map { |t| t.id },
               :message => "%{value} is not a valid type id" }
@@ -52,6 +52,10 @@ class Election < ActiveRecord::Base
   # save the date before the record is saved.  I would like to figure out a
   # better way to do this.
   before_update :process_details_and_summary
+  
+  def title
+    "#{self.date.year} #{self.type.value} Election"
+  end
 
 
 
