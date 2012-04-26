@@ -42,37 +42,74 @@ body {
     min-height: 30em;
 }
 
+/*
+.race-table {
 table {
     border-collapse: collapse;
     min-width: 100%
 }
+    th {
+        background-color: gray;
+        border-left: 2px solid gray;
+        border-right: 2px solid gray;
+        border-bottom: 2px solid lightgray;
+        color: white;
+    }
 
-th {
-    background-color: gray;
-    border-left: 2px solid gray;
-    border-right: 2px solid gray;
-    border-bottom: 2px solid lightgray;
-    color: white;
+    tr.odd {
+        background-color: lightgray;
+        td.int {
+            border-right: 2px solid white;
+            border-left: 2px solid white;
+        }
+        td.first {
+            border-right: 2px solid white;
+        }
+        td.last {
+            border-left: 2px solid white;
+        }
+    }
+
+    td {
+        border: 2px solid lightgray;
+        padding: 0.5em 1em;
+        font-size: 120%;
+    }
 }
-
-tr.odd {
-    background-color: lightgray;
-    td.int {
-        border-right: 2px solid white;
-        border-left: 2px solid white;
-    }
-    td.first {
-        border-right: 2px solid white;
-    }
-    td.last {
-        border-left: 2px solid white;
-    }
-}
-
-td {
+*/
+table.race-table {
+    border-collapse: collapse;
+    min-width: 100%;
     border: 2px solid lightgray;
-    padding: 0.5em 1em;
-    font-size: 120%;
+    margin-bottom: 1em;
+    tr {
+        td {
+            border-color: lightgray;
+            border-width: 2px;
+        }
+        td.name {
+            width: 75%;
+        }
+    }
+}
+
+table.table {
+    tr {
+        td.int, th.int {
+            border-right: 0px solid white;
+            border-left: 0px solid white;
+        }
+        td.first, th.first {
+            border-right: 0px solid white;
+        }
+        td.last, th.last {
+            border-left: 0px solid white;
+        }
+    }
+
+    th {
+        background-color: lightgray;
+    }
 }
 
 .field_with_errors {
@@ -131,12 +168,12 @@ td {
 .race-heading {
     background-color: $primaryColor;
     color: white;
-    border-top: 2px solid gray;
-    border-left: 2px solid gray;
-    border-right: 2px solid gray;
+    border-top: 2px solid lightgray;
+    border-left: 2px solid lightgray;
+    border-right: 2px solid lightgray;
     padding: 4px;
 }
 
-table.race-table {
-    margin-bottom: 1em;
+.reporting {
+    color: black;
 }

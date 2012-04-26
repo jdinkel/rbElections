@@ -25,10 +25,11 @@
       <div class="race-heading" onclick="location.href='<%= elections_path %>';"  style="cursor:pointer;">
         <h3><%= race.name %></h3>
       </div>
-      <table class="race-table">
-        <tr><th>Candidate</th><th>Votes</th></tr>
+      <table class="table table-condensed table-striped race-table">
+        <tr><thead><th>Candidate</th><th>Votes</th></tr></thead>
+      <tr></tr>
         <% race.candidates.each do |candidate| %>
-          <tr><td><%= candidate.name %></td><td><%= candidate.cache_votes %></td></tr>
+          <tr><td class="name"><%= candidate.name %></td><td><%= candidate.cache_votes %></td></tr>
         <% end %>
       </table>
     <% end %>

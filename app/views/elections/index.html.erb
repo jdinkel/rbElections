@@ -3,15 +3,18 @@
 <div class="row"><div class="span10 offset1"><h2>Election List</h2></div></div>
 
 <div class="row"><div class="span10 offset1">
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Date</th>
-    <th>Status</th>
-  </tr>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th class="first">Title</th>
+      <th class="int">Date</th>
+      <th class="last">Status</th>
+    </tr>
+  </thead>
+  <tr></tr>
 
 <% @elections.each do |election| %>
-  <tr class="<%= cycle("even", "odd") %>" onclick="location.href='<%= election_path(election) %>';"  style="cursor:pointer;">
+  <tr onclick="location.href='<%= election_path(election) %>';"  style="cursor:pointer;">
     <td class="first"><%= election.title %></td>
     <td class="int"><%= election.date.strftime("%B #{election.date.day.ordinalize}, %Y") %></td>
     <td class="last"><%= election.status.value %></td>
