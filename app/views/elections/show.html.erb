@@ -22,16 +22,19 @@
     </div>
 
     <% @election.races.each do |race| %>
-      <div class="race-heading" onclick="location.href='<%= elections_path %>';"  style="cursor:pointer;">
-        <h3><%= race.name %></h3>
+      <div class="race-entry">
+        <div class="race-heading" onclick="location.href='<%= elections_path %>';"  style="cursor:pointer;">
+          <h3><%= race.name %></h3>
+          <div class="reporting"><%= race.cache_precincts_reporting %> precincts reporting</div>
+        </div>
+        <table class="race-table table table-condensed table-striped">
+          <tr><thead><th>Candidate</th><th>Votes</th></tr></thead>
+          <tr></tr>
+          <% race.candidates.each do |candidate| %>
+            <tr><td class="name"><%= candidate.name %></td><td><%= candidate.cache_votes %></td></tr>
+          <% end %>
+        </table>
       </div>
-      <table class="table table-condensed table-striped race-table">
-        <tr><thead><th>Candidate</th><th>Votes</th></tr></thead>
-      <tr></tr>
-        <% race.candidates.each do |candidate| %>
-          <tr><td class="name"><%= candidate.name %></td><td><%= candidate.cache_votes %></td></tr>
-        <% end %>
-      </table>
     <% end %>
   </div>
 </div>
