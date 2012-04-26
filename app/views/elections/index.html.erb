@@ -13,7 +13,7 @@
 <% @elections.each do |election| %>
   <tr class="<%= cycle("even", "odd") %>">
     <td class="first"><%= link_to election.title, election %></td>
-    <td class="int"><%= election.date.strftime("%B %-d, %Y") %></td>
+    <td class="int"><%= election.date.strftime("%B #{election.date.day.ordinalize}, %Y") %></td>
     <td class="last"><%= election.status.value %></td>
   </tr>
 <% end %>

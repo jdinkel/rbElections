@@ -8,7 +8,7 @@
 
 Status.create(:value => "Pending")
 Status.create(:value => "Active")
-Status.create(:value => "Archived")
+Status.create(:value => "Final Results")
 Type.create(:value => "Primary")
 Type.create(:value => "General")
 Type.create(:value => "Special")

@@ -1,4 +1,4 @@
-<% provide(:title, '@election.title') %>
+<% provide(:title, @election.title) %>
 
 <div class="row">
   <div class="span10 offset1">
@@ -9,7 +9,7 @@
 
     <p>
       <b>Date:</b>
-      <%= @election.date %>
+      <%= @election.date.strftime("%B #{@election.date.day.ordinalize}, %Y") %>
     </p>
 
     <p>
