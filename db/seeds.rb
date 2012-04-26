@@ -12,3 +12,8 @@ Status.create(:value => "Final Results")
 Type.create(:value => "Primary")
 Type.create(:value => "General")
 Type.create(:value => "Special")
+
+Election.create(:date => "9 Apr 2011", :type_id => Type.find_by_value('General').id, :status_id => Status.find_by_value('Active').id, :party_split => false, :lock => false)
+Election.create(:date => "3 Apr 2010", :type_id => Type.find_by_value('General').id, :status_id => Status.find_by_value('Final Results').id, :party_split => false, :lock => false)
+Election.create(:date => "2 Apr 2009", :type_id => Type.find_by_value('Special').id, :status_id => Status.find_by_value('Final Results').id, :party_split => false, :lock => false)
+Election.create(:date => "1 Apr 2011", :type_id => Type.find_by_value('Primary').id, :status_id => Status.find_by_value('Final Results').id, :party_split => false, :lock => false)
