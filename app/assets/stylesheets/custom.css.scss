@@ -4,6 +4,7 @@
 
 $primaryColor: #cc0000;
 $secondaryColor: #bfb9a4;
+
 /* universal */
 
 h1, h2, h3, h4, h5, h6 {
@@ -103,4 +104,39 @@ td {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+#election-heading {
+    text-align: center;
+    .navbar {
+        text-align: left;
+        margin: 0px;
+    }
+    border-bottom: medium solid gray;
+    margin-bottom: 1em;
+}
+
+#election-title {
+    
+}
+
+#election-date {
+    font-size: 120%;
+}
+
+#election-status {
+    font-size: 120%;
+}
+
+.race-heading {
+    background-color: $primaryColor;
+    color: white;
+    border-top: 2px solid gray;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+    padding: 4px;
+}
+
+table.race-table {
+    margin-bottom: 1em;
 }

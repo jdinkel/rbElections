@@ -24,10 +24,6 @@
     <%= collection_select(:election, :status_id, Status.all, :id, :value) %>
   </div>
   <div class="field">
-    <%= f.label :lock %><br />
-    <%= f.check_box :lock %>
-  </div>
-  <div class="field">
     <%= f.label :details_upload, "Details File" %><br />
     <%= f.file_field :details_upload %>
   </div>

@@ -2,46 +2,35 @@
 
 <div class="row">
   <div class="span10 offset1">
-    <p>
-      <b>Title:</b>
-      <%= @election.title %>
-    </p>
+    <div id="election-heading">
+      <div class="navbar">
+        <%= link_to 'Election List', elections_path %> |
+        <%= link_to 'Edit', edit_election_path(@election) %>
+      </div>
+      <h2 id="election-title">
+        <%= @election.title %>
+      </h2>
 
-    <p>
-      <b>Date:</b>
-      <%= @election.date.strftime("%B #{@election.date.day.ordinalize}, %Y") %>
-    </p>
+      <p id="election-date">
+        <%= @election.date.strftime("%A %B #{@election.date.day.ordinalize}, %Y") %>
+      </p>
 
-    <p>
-      <b>Type:</b>
-      <%= @election.type.value %>
-    </p>
-
-    <p>
-      <b>Status:</b>
-      <%= @election.status.value %>
-    </p>
-
-    <p>
-      <b>Lock:</b>
-      <%= @election.lock %>
-    </p>
-
-
-    <%= link_to 'Edit', edit_election_path(@election) %> |
-    <%= link_to 'Back', elections_path %>
-
-    <br /><br /><hr />
+      <p id="election-status">
+        <b>Status:</b>
+        <%= @election.status.value %>
+      </p>
+    </div>
 
     <% @election.races.each do |race| %>
-      <h3><%= race.name %></h3>
-      <table>
+      <div class="race-heading" onclick="location.href='<%= elections_path %>';"  style="cursor:pointer;">
+        <h3><%= race.name %></h3>
+      </div>
+      <table class="race-table">
         <tr><th>Candidate</th><th>Votes</th></tr>
         <% race.candidates.each do |candidate| %>
           <tr><td><%= candidate.name %></td><td><%= candidate.cache_votes %></td></tr>
         <% end %>
       </table>
-      <br /><br />
     <% end %>
   </div>
 </div>
