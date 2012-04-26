@@ -166,7 +166,7 @@ class Election < ActiveRecord::Base
 
         data_hash[:raw_summary].each do |record|
           # get the cache_precincts_reporting for each race
-          race = Race.find_by_name(record[:race_name])
+          race = Race.find_by_name_and_election_id(record[:race_name], self.id)
           race.cache_precincts_reporting = "#{record[:counted_precincts]} of #{record[:eligible_precincts]}"
 
           # fill the cache_total_votes for each candidate
