@@ -185,8 +185,44 @@ table.race-table {
             border-color: lightgray;
             border-width: 2px;
         }
-        td.name {
-            width: 75%;
+        td.name-data {
+            .name {
+                float:left;
+            }
+            .party {
+                float: left;
+                margin-left: 0.5em;
+                border: 1px solid black;
+                padding-left: 1px;
+                padding-right: 1px;
+                width: 2.2em;
+                text-align: center;
+                overflow: hidden;
+            }
+            .party-REP {
+                background-color: red;
+                color: white;
+                border: 0;
+                padding: 0;
+            }
+            .party-DEM {
+                background-color: blue;
+                color: white;
+                border: 0;
+                padding: 0;
+            }
+            .party-LIB {
+                background-color: gold;
+                color: blue;
+                border: 0;
+                padding: 0;
+            }
+            .party-NON {
+                display: none;
+            }
+        }
+        td.votes {
+            width: 25%;
         }
     }
 }

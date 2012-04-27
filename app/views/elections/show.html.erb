@@ -33,7 +33,7 @@
           <tr><thead><th>Candidate</th><th>Votes</th></tr></thead>
           <tr></tr>
           <% race.candidates.each do |candidate| %>
-            <tr><td class="name"><%= candidate.name %></td><td><%= candidate.cache_votes %></td></tr>
+          <tr><td class="name-data"><div class="name"><%= candidate.name %></div><div class="party party-<%= candidate.party %>"><%= candidate.party %></div></td><td class="votes"><%= candidate.cache_votes %></td></tr>
           <% end %>
         </table>
       </div>
