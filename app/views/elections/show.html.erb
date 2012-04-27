@@ -24,8 +24,10 @@
     <% @election.races.each do |race| %>
       <div class="race-entry">
         <div class="race-heading" onclick="location.href='<%= elections_path %>';"  style="cursor:pointer;">
-          <h3><%= race.name %></h3>
-          <div class="reporting"><%= race.cache_precincts_reporting %> precincts reporting</div>
+          <table><tr>
+              <td><h3><%= race.name %></h3></td>
+              <td class="reporting"><%= race.cache_precincts_reporting %> precincts reporting</td>
+          </tr></table>
         </div>
         <table class="race-table table table-condensed table-striped">
           <tr><thead><th>Candidate</th><th>Votes</th></tr></thead>

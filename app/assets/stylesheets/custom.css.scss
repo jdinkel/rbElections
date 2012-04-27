@@ -164,8 +164,13 @@ table.table {
         h3 {
             
         }
-        .reporting {
-            color: black;
+        table {
+            width: 100%;
+            td.reporting {
+                color: black;
+                width: 24%;
+                vertical-align: center;
+            }
         }
     }
 }
